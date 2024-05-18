@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Insights</title>
+    <style>
+        /* Add some styling to the tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        h2 {
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+            color: #333;
+            margin-bottom: 20px;
+        }
+     body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px auto;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #555;
+}
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .fa-map-marker-alt {
+            color: #ff5252;
+        }
+        .fa-envelope {
+            color: #00bfa5;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="color: #FF4136;">Customers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.0 }}</td>
+                    <td>{{ customer.1 }}</td>
+                    <td>{{ customer.2 }}</td>
+                    <td>{{ customer.3 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h2 style="color: #0074D9;">January Orders</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Customer ID</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in january_orders %}
+            <tr>
+                <td>{{ order.0 }}</td>
+                <td>{{ order.1 }}</td>
+                <td>{{ order.2 }}</td>
+                 </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+    <h2 style="color: #FF4136;">Orders with Customer Details</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Customer First Name</th>
+            <th>Customer Last Name</th>
+            <th>Customer Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order_with_customer in orders_with_customer_details %}
+            <tr>
+                <td>{{ order_with_customer.0 }}</td>
+                <td>{{ order_with_customer.1 }}</td>
+                <td>{{ order_with_customer.3 }}</td>
+                <td>{{ order_with_customer.4 }}</td>
+                <td>{{ order_with_customer.5 }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 style="color: #0074D9;">Products in Order</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product_in_order in products_in_order %}
+            <tr>
+                <td>{{ product_in_order.0 }}</td>
+                <td>{{ product_in_order.1 }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 style="color: #FF4136;">Total Spent by Customer</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Total Spent</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer_total_spent in total_spent_by_customer %}
+            <tr>
+                <td>{{ customer_total_spent.0 }}</td>
+                <td>{{ customer_total_spent.1 }}</td>
+                <td>{{ customer_total_spent.2 }}</td>
+                <td>{{ customer_total_spent.3 }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 style="color: #0074D9;">Most Popular Product</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Total Ordered</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for popular_product in most_popular_product %}
+            <tr>
+                <td>{{ popular_product.0 }}</td>
+                <td>{{ popular_product.1 }}</td>
+                <td>{{ popular_product.2 }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 style="color: #FF4136;">Monthly Sales</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Month</th>
+            <th>Total Orders</th>
+            <th>Total Sales</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for monthly_sale in monthly_sales %}
+            <tr>
+                <td>{{ monthly_sale.0 }}</td>
+                <td>{{ monthly_sale.1 }}</td>
+                <td>{{ monthly_sale.2 }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 style="color: #0074D9;">Big Spender Customers</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Total Spent</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for big_spender_customer in big_spender_customers %}
+            <tr>
+                <td>{{ big_spender_customer.0 }}</td>
+                <td>{{ big_spender_customer.1 }}</td>
+                <td>{{ big_spender_customer.2 }}</td>
+                <td>{{ big_spender_customer.3 }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
